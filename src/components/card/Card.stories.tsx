@@ -6,6 +6,7 @@ import CardNew, { CardProps } from './Card';
 const meta: Meta<typeof CardNew> = {
     component: CardNew,
     title: 'Components/Card',
+    tags: ['autodocs'],
     parameters: {
         controls: { expanded: true },
     },

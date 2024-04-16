@@ -6,6 +6,7 @@ import { type } from "os";
 const meta: Meta = {
     title: 'Components/Dialog',
     component: Dialog,
+    tags: ['autodocs'],
 };
 
 export default meta;

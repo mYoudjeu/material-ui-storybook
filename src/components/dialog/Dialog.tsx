@@ -62,23 +62,30 @@ const Dialog: React.FC<DialogProps & MuiDialogProps> = ({
     openProp,
     ...props
 }) => {
+    // State to manage the open state of the dialog
     const [open, setOpen] = useState(openProp ?? false);
     const [maxWidth, setMaxWidth] = useState<'xs' | 'sm' | 'md' | 'lg' | 'xl'>('sm');
 
+    // Effect to update the maximum width of the dialog
     useEffect(() => {
         if (openMaxWidth) {
             setMaxWidth(openMaxWidth);
         }
     }, [openMaxWidth]);
 
+
+    // Function to handle opening the dialog
     const handleOpen = () => {
         setOpen(true);
     };
 
+    // Function to handle closing the dialog
     const handleClose = () => {
         setOpen(false);
     };
 
+
+    // Function to handle dragging of the dialog
     const handleDrag: DraggableEventHandler = (e, ui) => {
         e.preventDefault();
         e.stopPropagation();
@@ -90,6 +97,24 @@ const Dialog: React.FC<DialogProps & MuiDialogProps> = ({
         onClose: handleClose,
         fullScreen: openFullScreen,
         maxWidth: maxWidth,
+    };
+
+
+    const getWidth = (maxWidth: string) => {
+        switch (maxWidth) {
+            case 'xs':
+                return 200;
+            case 'sm':
+                return 400;
+            case 'md':
+                return 600;
+            case 'md':
+                return 800;
+            case 'md':
+                return 1000;
+            default:
+                return 'auto';
+        }
     };
 
     return (
@@ -117,7 +142,7 @@ const Dialog: React.FC<DialogProps & MuiDialogProps> = ({
                     </MuiDialog>
                 </Draggable>
             ) : (
-                <MuiDialog {...dialogProps} TransitionComponent={slideIn ? Slide : undefined}>
+                <MuiDialog {...dialogProps} TransitionComponent={slideIn ? Slide : undefined} sx={{ width: getWidth(maxWidth) }}>
                     <DialogTitle>Dialog title</DialogTitle>
                     <DialogContent>
                         <Typography>{content}</Typography>

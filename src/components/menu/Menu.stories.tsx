@@ -16,6 +16,7 @@ export const DenseMenuComponent = DenseMenuStory.bind({});
 
 export default {
     title: 'Components/Menu',
+    tags: ['autodocs'],
     parameters: {
         controls: { hideNoControlsWarning: true },
     },

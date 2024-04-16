@@ -10,6 +10,7 @@ interface ButtonStoryProps extends ButtonProps {
 export default {
     component: Button,
     title: 'Components/Button',
+    tags: ['autodocs'],
 } as Meta;
 
 export const Base: StoryFn<ButtonStoryProps> = () => (
